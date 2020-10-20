@@ -35,7 +35,7 @@
         *{font-family: 'roboto','Noto Sans KR', sans-serif;}
         a{text-decoration: none;}
         a:hover{text-decoration: underline;}
-        img{vertical-align: top;}
+        img{vertical-align: top; width: 100%;}
         ul,ol,li{list-style: none;}
         .clearfix::after{content: ''; display: block;clear: both;}
         .f_left{float: left;}
@@ -43,7 +43,22 @@
 
         .container{width: 100%; max-width: 1200px;;margin: 0 auto; padding: 0 15px;}
         .content{padding: 40px 0;}
-       
+
+        .skip_menu{background-color: #503396; text-align: center; padding: 10px; position: fixed; left: 0; top: -99999px; z-index: 1;
+            width: 100%;}
+        .skip_menu.active{top: 0;}
+        .skip_menu>a{display: inline-block; border: 2px solid white; color: white; border-radius: 5px; padding: 3px 10px;}
+        .banner01,.banner03{background-color: #4f79a9; display: none;}
+
+        header{background-color: #111; height: 100px;}
+        
+        .box_office{height: 100px; background-color: aqua;} 
+        .event{height: 500px; background-color: blueviolet;}
+        .curation{height: 500px; background-color: crimson;}
+        .mega_info{height: 100px; background-color: darkolivegreen;}
+        .banner03{height: 100px; background-color: darkorange;}
+        .footer{height: 100px; background-color: deepskyblue;}
+
 
 
 
@@ -52,6 +67,7 @@
         @media(min-width: 768px){
             .container{width: 80%;}
             .content{padding: 50px 0;}
+            .banner01,.banner03{display: block;}
         }
 
 
@@ -64,21 +80,29 @@
 </head>
 <body>
     <div class="skip_menu">
-        <a href="#">본문 바로가기</a>
-        <a href="#">푸터 바로가기</a>
+        <a href="box_office">본문 바로가기</a>
+        <a href="footer">푸터 바로가기</a>
     </div>
     <section class="wrap">
-        <section class="banner01"></section>
+        <section class="banner01">
+            <div class="container">
+                <img src="./imges/hyundai01.jpg" alt="현대01">
+            </div>
+        </section>
         <header class="header"></header>
-        <section class="section box_office"></section>
+        <section class="section box_office" id="box_office"></section>
         <section class="section event"></section>
         <section class="section curation"></section>
         <section class="section mega_info"></section>
-        <section class="section banner03"></section>
-        <footer class="footer"></footer>
+        <section class="section banner03">
+            <div class="container">
+                <img src="./imges/hyundai03.jpg" alt="현대03">
+            </div>
+        </section>
+        <footer class="footer" id="footer"></footer>
     </section>
 
-
+   
     <!-- 스크립트 -->
     <!-- jQuery -->
     <script src="./js/view-source_https___cdnjs.com_libraries_jquery.html"></script>
@@ -86,5 +110,18 @@
     <script src="./js/swiper-bundle.min.js"></script>
     <!-- 프렉피스프리 -->
     <script src="./js/prefixfree.min.js"></script>
+
+    <script>
+        $(function(){
+            $('.skip_menu a').on({
+               focus:function(){
+                $('.skip_menu').addClass('active');
+               },
+               blur:function(){
+                $('.skip_menu').removeClass('active');
+               }
+            });
+        })
+    </script>
 </body>
 </html>
